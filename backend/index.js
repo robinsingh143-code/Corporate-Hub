@@ -10,8 +10,8 @@ const cors = require('cors')
 // app.get('/product',(req,res) => {
 //     res.send('product page')
 // })
-
-const UserRouter = require('./routers/contactus')
+const UserRouter = require('./routers/user')
+const ContactusRouter = require('./routers/contactus')
 // middleware
  app.use(express.json())
  app.use(cors({
@@ -19,13 +19,13 @@ const UserRouter = require('./routers/contactus')
  }))
 
  app.use('/contactus' , ContactusRouter)
+ app.use('/user' , UserRouter)
 
 app.listen(port,() => {
     console.log(`server is running on port ${port} `)
 })
 
 
-// const UserRouter = require('./routers/user')
 // const ContactusRouter = require('./routers/contactus')
 // // middleware
 //  app.use(express.json())
@@ -33,7 +33,6 @@ app.listen(port,() => {
 //     origin: ['http://localhost:3000'],
 //  }))
 
-//  app.use('/user' , UserRouter)
 //  app.use('/contactus' , ContactusRouter)
 
 // app.listen(port,() => {
