@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Model = require('../models/contactus');
+const Model = require('../models/product');
 
 
 router.post('/add', (req,res)  => {
@@ -61,19 +61,6 @@ router.get('/getbyid/:id', (req,res) =>
                 
             });
         })
-
-
-          router.delete('/delete/:id', (req,res) => {
-                Model.findByIdAndDelete(req.params.id)
-                .then((result) => {
-                    res.json(result)
-                    
-                }).catch((err) => {
-                    console.log(err)
-                    res.status(500).json({error: 'Internal Server Error'})
-                    
-                });
-            })
 
 
 module.exports = router;

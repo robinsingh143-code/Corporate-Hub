@@ -1,0 +1,181 @@
+'use client'
+import React from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+
+
+const SignupSchema = Yup.object().shape({
+  name : Yup.string()
+  .min(2,'name must be at least 2 characters')
+  .max(50,'name must be at must 50 characters')
+  .required('name is required'),
+
+  email : Yup.string()
+  .email('please enter a vaild email address')
+  .required('email is requried'),
+
+  password : Yup.string()
+  .min(8,'password must be at least 8 characters')
+  .matches(/[a-z]/, 'password must contain at least ane lowercase letter')
+  .matches(/[A-Z]/, 'password must contain at least one uppercase letter')
+  .matches(/[0-9]/, 'password must conatin at least one number')
+  .matches(/[!@#$%^&*()_+{}|:"<>?[',.]/, 'password must conatain at least one charracter' )
+  .required('password is required'),
+
+
+})
+
+
+const Signup = () => {
+
+  const router = useRouter()
+
+  const signupForm = useFormik({
+    initialValues : {
+      name : '',
+      email : '',
+      password : '',
+    },
+
+    onSubmit : (values,{resetForm}) => {
+      console.log(values);
+
+      axios.post('http://localhost:5000/user/add',values)
+
+      .then((response) => {
+        console.log(response.status)
+        resetForm()
+        toast.success('use added successfully')
+        router.push('/login')
+      }).catch((err) => {
+        console.log(err)
+        toast.error('failed to add user')
+        
+      });
+      // resetForm()
+      // toast.success("signin successfully")
+      
+    },
+    validationSchema : SignupSchema
+  }) 
+
+
+  return (
+    <div>
+              <section className="bg-gray-100 min-h-screen flex items-center justify-center ">
+  <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+  <div className="md:block hidden w-1/2 ">
+      <img
+        className="rounded-2xl w-full cover "
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq396VXBCcsc_lxVfJmNn2gn7ikSuDXk0kDw&s"
+        alt=""
+      />
+    </div>
+    <div className="md:w-1/2 m-5">
+      <h2
+        className="font-bold 
+          text-2xl 
+          text-[#002074]"
+      >
+        Sign up
+      </h2>
+      <p className="text-sm mt-4 text-[#002074]">
+        register here for member, easily join us
+      </p>
+      <form onSubmit={signupForm.handleSubmit} action="" className="flex flex-col gap-4">
+        {signupForm.errors.name && signupForm.touched.name ?(
+          <div className='text-red-500 text-sm'>
+            {signupForm.errors.name}
+
+          </div>
+        ):null }
+        <input
+          onChange={signupForm.handleChange}
+          value={signupForm.values.name}
+          className="p-2  rounded-xl border"
+          type="text"
+          name="name"
+          placeholder="Name"
+        />
+        {signupForm.errors.email && signupForm.touched.email ?(
+          <div className='text-red-500 text-sm'>
+            {signupForm.errors.email}
+
+          </div>
+        ):null }
+        <input
+        onChange={signupForm.handleChange}
+        value={signupForm.values.email}
+          className="p-2  rounded-xl border"
+          type="text"
+          name="email"
+          placeholder="Email"
+        />
+        <div className="relative">
+        {signupForm.errors.password && signupForm.touched.password ?(
+          <div className='text-red-500 text-sm'>
+            {signupForm.errors.password}
+
+          </div>
+        ):null }
+          <input
+          onChange={signupForm.handleChange}
+          value={signupForm.values.password}
+            className="p-2 rounded-xl border w-full"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className=" w-4 h-4 absolute top-1/2 right-3 -translate-y-1/2"
+            viewBox="0 0 576 512"
+          >
+            {/*!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
+            <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+          </svg>
+        </div>
+        <button type='submit' className="bg-[#002074] rounded-xl text-white py-2 hover:scale-105 duration-300">
+          submit
+        </button>
+      </form>
+      {/* <div >
+              <hr>
+              <p>or</p>
+              <hr>
+          </div> */}
+      <div className="mt-10 grid grid-cols-3 items-center text-gray-600">
+        <hr className="border-gray-500" />
+        <p className="text-center tex-sm">or</p>
+        <hr className="border-gray-500" />
+      </div>
+      <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4"
+          viewBox="0 0 488 512"
+        >
+          {/*!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
+          <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+        </svg>
+        register with google
+      </button>
+      
+      <div className="mt-3 text-xs flex justify-between items-center">
+        <p>if you have an account...</p>
+        <button className="py-2 px-5 bg-white bg-border rounded-xl ">
+          login
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</section>
+    </div>
+  )
+}
+
+export default Signup

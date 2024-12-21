@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // const Model = require('../Models/user');
-const Model = require('../models/user')
+const Model = require('../models/register')
 
 
 router.post('/add',(req,res) => {
@@ -92,18 +92,6 @@ router.get('/getbyemail/:email', (req,res) =>
         });
     })
 
-
-    router.post('/authenticate',(req,res) => {
-        Model.findOne(req.body)
-        .then((result) => {
-            if(result) res.json(result)
-                else res.status(400).json({message:'login failed'})     
-        }).catch((err) => {
-            console.log(err)
-            res.status(500).json(err)
-            
-        });
-    })
 
 
 

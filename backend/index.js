@@ -12,6 +12,15 @@ const cors = require('cors')
 // })
 const UserRouter = require('./routers/user')
 const ContactusRouter = require('./routers/contactus')
+const RegisterRouter = require('./routers/register')
+const AdminuserRouter = require('./routers/adminuser')
+const ProductRouter = require('./routers/product')
+const HubRouter = require('./routers/hub')
+const HubpRouter = require('./routers/hubp')
+const HubvRouter = require('./routers/hubv')
+const ProfileRouter = require('./routers/addProfile')
+
+
 // middleware
  app.use(express.json())
  app.use(cors({
@@ -20,6 +29,14 @@ const ContactusRouter = require('./routers/contactus')
 
  app.use('/contactus' , ContactusRouter)
  app.use('/user' , UserRouter)
+ app.use('/register' ,RegisterRouter)
+ app.use('/adminuser', AdminuserRouter)
+ app.use('/product' , ProductRouter)
+ app.use('/hub' , HubRouter)
+ app.use('/hubp' , HubpRouter)
+ app.use('/hubv' , HubvRouter)
+ app.use('/addprofile' , ProfileRouter)
+ 
 
 app.listen(port,() => {
     console.log(`server is running on port ${port} `)
