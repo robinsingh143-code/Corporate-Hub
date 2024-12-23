@@ -44,8 +44,9 @@ export default function RootLayout({ children }) {
           </Toaster>
 
           {children}
-          {/* <Footer /> */}
+          
         </AppProvider>
+        
       </body>
     </html>
   );

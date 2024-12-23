@@ -97,9 +97,9 @@ const Manageregister = () => {
                     <td className='p-2 border border-violet-700'>
                       <button onClick={() => deleteUser(user._id)} className='bg-red-500 text-white px-4 py-2 rounded-lg'>Delete</button>
                     </td>
-                    <td className='p-2 border border-violet-700'>
+                    {/* <td className='p-2 border border-violet-700'>
                       <Link href={'/updateregister/' + user._id} className='bg-blue-500 text-white px-4 py-2 rounded-lg'>Update</Link>
-                    </td>
+                    </td> */}
                 </tr>
               })
             }

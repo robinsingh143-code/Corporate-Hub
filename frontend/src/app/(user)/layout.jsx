@@ -2,6 +2,7 @@
 // import localFont from "next/font/local";
 // import "./globals.css";
 // import { Toaster, ToastBar } from "react-hot-toast";
+import Footer from "../footer";
 import Navbar from "../navbar";
 import { AppProvider } from "@/context/appContext";
 
@@ -44,7 +45,7 @@ export default function RootLayout({ children }) {
           </Toaster>  */}
 
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </AppProvider>
       </body>
     </html>

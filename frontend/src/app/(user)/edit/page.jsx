@@ -4,10 +4,12 @@ import React, { useEffect, useState} from 'react'
 // import { useNavigate } from 'react-router-dom';
 // import { enqueueSnackbar } from 'notistack';
 // import logo from "../assets/Logo-removebg-preview.png"
+import {useRouter} from 'next/navigation'
 
 
 const EditPage = () => {
 //   const navigate = useNavigate();
+const router = useRouter()
 
   const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
   console.log(currentUser);
@@ -93,7 +95,7 @@ const EditPage = () => {
             .then((result) => {
               console.log(result);
               updateUser({ profile: result._id })
-               navigate('/ProfileList')
+               router.push('/listing')
             })
         } else {
           toast.error('Something went wrong');

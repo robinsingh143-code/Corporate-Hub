@@ -15,9 +15,7 @@ const ContactusRouter = require('./routers/contactus')
 const RegisterRouter = require('./routers/register')
 const AdminuserRouter = require('./routers/adminuser')
 const ProductRouter = require('./routers/product')
-const HubRouter = require('./routers/hub')
 const HubpRouter = require('./routers/hubp')
-const HubvRouter = require('./routers/hubv')
 const ProfileRouter = require('./routers/addProfile')
 
 
@@ -32,9 +30,7 @@ const ProfileRouter = require('./routers/addProfile')
  app.use('/register' ,RegisterRouter)
  app.use('/adminuser', AdminuserRouter)
  app.use('/product' , ProductRouter)
- app.use('/hub' , HubRouter)
  app.use('/hubp' , HubpRouter)
- app.use('/hubv' , HubvRouter)
  app.use('/addprofile' , ProfileRouter)
  
 

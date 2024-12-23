@@ -1,7 +1,11 @@
-'use client'
-import React from 'react'
-import { Slide } from 'react-awesome-reveal'
-import Navbar from './navbar'
+'use client';
+import React from 'react';
+import { Slide } from 'react-awesome-reveal';
+import Navbar from './navbar';
+import Footer from './footer';
+
+
+
 const Home = () => {
   return (
 
@@ -161,7 +165,7 @@ const Home = () => {
 
       </div>
     </div>
-  </div> */}
+  </div>  */}
 
 
 
@@ -265,7 +269,10 @@ const Home = () => {
   </div>
 
 
+
+    <Footer />
     </div>
+
  
     
   )

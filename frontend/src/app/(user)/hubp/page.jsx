@@ -32,8 +32,9 @@ const Hub = () => {
     const corporateForm = useFormik({
         initialValues: {
             title: '',
+            category: '',
+            imgurl: '',
             description: '',
-            imgurl: ''
         },
         onSubmit: (values, {resetForm}) => {
             console.log(values)
@@ -84,6 +85,15 @@ const Hub = () => {
                                     onChange={corporateForm.handleChange}
                                     value={corporateForm.values.title}
                                     placeholder='Name'
+                                />
+                            </div>
+                            <div className='pb-5'>
+                                <input type="text"
+                                    className='w-full border p-2 rounded-lg '
+                                    id='category'
+                                    onChange={corporateForm.handleChange}
+                                    value={corporateForm.values.category}
+                                    placeholder='category'
                                 />
                             </div>
                             <div className='pb-5'>

@@ -137,7 +137,7 @@ const Sidebar = () => {
                 </li>
                 
                 <li>
-                  <a className="" href="/admin/fileUploading">
+                  {/* <a className="" href="/admin/fileUploading">
                     <button
                       className="middle none  font-[sans-serif] font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                       type="button"
@@ -159,8 +159,8 @@ const Sidebar = () => {
                         Upload File
                       </p>
                     </button>
-                  </a>
-                  <a className="" href="/admin/addProduct">
+                  </a> */}
+                  {/* <a className="" href="/admin/addProduct">
                     <button
                       className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                       type="button"
@@ -182,8 +182,8 @@ const Sidebar = () => {
                         add Product
                       </p>
                     </button>
-                  </a>
-                  <a className="" href="/user/browse">
+                  </a> */}
+                  <a className="" href="/hubp">
                     <button
                       className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                       type="button"
@@ -202,7 +202,7 @@ const Sidebar = () => {
                         />
                       </svg>
                       <p className="block antialiased  font-[sans-serif] text-base leading-relaxed text-inherit font-medium capitalize">
-                        browse Product
+                        Hub
                       </p>
                     </button>
                   </a>
@@ -216,7 +216,7 @@ const Sidebar = () => {
                   </p>
                 </li>
                 <li>
-                  <a className="" href="/user/login">
+                  <a className="" href="/login">
                     <button
                       className="middle none font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                       type="button"
@@ -241,7 +241,7 @@ const Sidebar = () => {
                   </a>
                 </li>
                 <li>
-                  <a className="" href="/user/signUp">
+                  <a className="" href="/signup">
                     <button
                       className="middle  font-[sans-serif] font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                       type="button"
